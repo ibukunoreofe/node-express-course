@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+  web:
+    build:
+      context: ./04-store-api
+      args:
+        - NODE_ENV=development
+    volumes:
+      - ./04-store-api:/usr/src/app
+      # this second line means preserve what was in this folder before and ignore the mount version if it exists.
+      # If this folder path was not in the system (image) before, it will be blank
+      # I will disable it in this build because I will prefer it uses same one backed by the volume above
+      # and if I want to force rebuild, I will just change to product and still ignore the line below
+      # because it is not really useful if I am not allow npm install to run each time
+      # it will be blank folder if I use it.
+      # - /usr/src/app/node_modules
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development

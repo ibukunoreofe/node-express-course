@@ -1,0 +1,17 @@
+### Get All Products Sorting
+GET {{baseUrl}}/api/v1/products?featured=false&company=ikea&name=d&sort=name,-price
+
+### Get All Products Pagination
+GET {{baseUrl}}/api/v1/products?featured=false&company=ikea&name=d&limit=2&page=2&sort=name,_id
+
+### Get All Products Pagination| Default sorting Created at. If the sorting is exactly same value, it can go nuts
+GET {{baseUrl}}/api/v1/products?featured=false&company=ikea&name=d&sort=name,_id
+
+### Get All Products With Condition
+GET {{baseUrl}}/api/v1/products?featured=false&company=ikea&name=d&sort=name,_id&numericFilters=price>40
+
+### Get All Products Select
+GET {{baseUrl}}/api/v1/products?featured=false&company=ikea&name=d&fields=name,price&sort=name&limit=4&page=1
+
+### Get All Products Static
+GET {{baseUrl}}/api/v1/products/static
