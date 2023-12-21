@@ -1,0 +1,40 @@
+### Create Task
+POST {{baseUrl}}/api/v1/tasks
+Content-Type: application/json
+
+{
+  "name": "Buy groceries",
+  "completed": false
+}
+
+###
+
+### Get All Tasks
+GET {{baseUrl}}/api/v1/tasks
+
+###
+
+### Get Task by ID
+@taskId = 6583146aa01e696dd60262ba
+# Replace ':taskId' with the actual task ID.
+GET {{baseUrl}}/api/v1/tasks/{{taskId}}
+
+###
+
+### Update Task
+# Replace ':taskId' with the actual task ID.
+PATCH {{baseUrl}}/api/v1/tasks/{{taskId}}
+Content-Type: application/json
+
+{
+  "name": "Buy groceries5",
+  "completed": false
+}
+
+###
+
+### Delete Task
+# Replace ':taskId' with the actual task ID.
+DELETE {{baseUrl}}/api/v1/tasks/{{taskId}}
+
+###
