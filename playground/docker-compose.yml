@@ -2,11 +2,11 @@ version: '3.8'
 services:
   web:
     build:
-      context: ./04-store-api
+      context: ./05-JWT-Basics
       args:
         - NODE_ENV=development
     volumes:
-      - ./04-store-api:/usr/src/app
+      - ./05-JWT-Basics:/usr/src/app
       # this second line means preserve what was in this folder before and ignore the mount version if it exists.
       # If this folder path was not in the system (image) before, it will be blank
       # I will disable it in this build because I will prefer it uses same one backed by the volume above

@@ -1,0 +1,12 @@
+### LOGIN
+POST {{baseUrl}}/api/v1/login
+Content-Type: application/json
+
+{
+  "username": "value1",
+  "password": "value2"
+}
+
+### Dashboard
+GET {{baseUrl}}/api/v1/dashboard
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjIsInVzZXJuYW1lIjoidmFsdWUxIiwiaWF0IjoxNzAzMjIzMDgyLCJleHAiOjE3MDU4MTUwODJ9.EbaPTJWyQkoML0KqOv69krxVwpOe26J5-J3AEN9EGnk
