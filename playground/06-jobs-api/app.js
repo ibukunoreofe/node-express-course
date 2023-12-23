@@ -10,7 +10,7 @@ const rateLimiter = require('express-rate-limit');
 // Swagger
 const swaggerUI = require('swagger-ui-express');
 const YAML = require('yamljs');
-const swaggerDocument = YAML.load('./swagger.yaml');
+const swaggerDocument = YAML.load('./swagger.yaml'); // preloaded
 
 const express = require('express');
 const app = express();
@@ -32,7 +32,10 @@ app.use(
   })
 );
 app.use(express.json());
-app.use(helmet());
+app.use(helmet({
+  contentSecurityPolicy: false, // disable https preference because it contains this (upgrade-insecure-requests)
+  hsts: false // disable https preference
+}));
 app.use(cors());
 app.use(xss());
 
