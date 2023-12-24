@@ -114,6 +114,7 @@ const showStats = async (req, res) => {
   ]);
 
   stats = stats.reduce((acc, curr) => {
+    // same as just deconstructing to { _id, count }
     const { _id: title, count } = curr;
     acc[title] = count;
     return acc;

@@ -18,6 +18,7 @@ const jobsRouter = require('./routes/jobs');
 const notFoundMiddleware = require('./middleware/not-found');
 const errorHandlerMiddleware = require('./middleware/error-handler');
 
+// https://expressjs.com/en/guide/behind-proxies.html
 app.set('trust proxy', 1);
 
 app.use(express.static(path.resolve(__dirname, './client/build')));
