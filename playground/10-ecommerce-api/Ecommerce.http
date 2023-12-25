@@ -1,0 +1,89 @@
+### Register Admin
+POST /api/v1/auth/register HTTP/1.1
+Host: {{baseUrl}}
+Authorization: Bearer {{bearerToken}}
+Content-Type: application/json
+
+{
+  "name": "Ibukun User",
+  "email": "ibukunoreofe@user.com",
+  "password": "password"
+}
+
+### Login
+POST /api/v1/auth/login HTTP/1.1
+Host: {{baseUrl}}
+Content-Type: application/json
+Authorization: Bearer {{bearerToken}}
+
+{
+  "email": "ibukunoreofe@admin.com",
+  "password": "password"
+}
+
+### products
+GET /api/v1/products HTTP/1.1
+Host: {{baseUrl}}
+Authorization: Bearer {{bearerToken}}
+
+### Create products
+POST /api/v1/products HTTP/1.1
+Host: {{baseUrl}}
+Content-Type: application/json
+Authorization: Bearer {{bearerToken}}
+
+{
+  "name": "emperor bed",
+  "price": 23999,
+  "image": "https://dl.airtable.com/.attachmentThumbnails/0446e84c5bca9643de3452a61b2d6195/1b32f48b",
+  "colors": ["#0000ff", "#000"],
+  "company": "ikea",
+  "description": "Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr dreamcatcher waistcoat, authentic chillwave trust fund. Viral typewriter fingerstache pinterest pork belly narwhal. Schlitz venmo everyday carry kitsch pitchfork chillwave iPhone taiyaki trust fund hashtag kinfolk microdosing gochujang live-edge",
+  "category": "bedroom"
+}
+
+### Get Single
+@productId=6589e98d4a28999c415625fb
+GET /api/v1/products/{{productId}} HTTP/1.1
+Host: {{baseUrl}}
+Authorization: Bearer {{bearerToken}}
+
+### Delete Single Job
+DELETE /api/v1/jobs/{{productId}} HTTP/1.1
+Host: {{baseUrl}}
+Authorization: Bearer {{bearerToken}}
+
+
+### Create Review
+POST /api/v1/reviews HTTP/1.1
+Host: {{baseUrl}}
+Content-Type: application/json
+Authorization: Bearer {{bearerToken}}
+
+{
+  "product": "{{productId}}",
+  "rating": 4,
+  "title": "Making a review on Emperor Bed",
+  "comment": "Reviewing is fun"
+}
+
+
+### Create Order
+POST /api/v1/orders HTTP/1.1
+Host: {{baseUrl}}
+Content-Type: application/json
+Authorization: Bearer {{bearerToken}}
+
+{
+  "tax": 399,
+  "shippingFee": 499,
+  "items": [
+    {
+      "name": "Emperor Bed",
+      "price": 23999,
+      "image": "https://dl.airtable.com/.attachmentThumbnails/0446e84c5bca9643de3452a61b2d6195/1b32f48b",
+      "amount": 10,
+      "product": "{{productId}}"
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+### Register Admin
+POST /api/v1/auth/register HTTP/1.1
+Host: {{baseUrl}}
+Authorization: Bearer {{bearerToken}}
+Content-Type: application/json
+
+{
+  "name": "Ibukun Admin",
+  "email": "ibukunoreofe@admin.com",
+  "password": "password"
+}
+
+### Login
+POST /api/v1/auth/login HTTP/1.1
+Host: {{baseUrl}}
+Content-Type: application/json
+Authorization: Bearer {{bearerToken}}
+
+{
+  "email": "ibukunoreofe@mailinator.com",
+  "password": "password"
+}
+
+### Jobs
+GET /api/v1/jobs HTTP/1.1
+Host: {{baseUrl}}
+Authorization: Bearer {{bearerToken}}
+
+### Jobs STATS
+GET /api/v1/jobs/stats HTTP/1.1
+Host: {{baseUrl}}
+Authorization: Bearer {{bearerToken}}
+
+### Create Job
+# Status field is optional
+POST /api/v1/jobs HTTP/1.1
+Host: {{baseUrl}}
+Content-Type: application/json
+Authorization: Bearer {{bearerToken}}
+
+{
+  "company": "GreenField Innovations",
+  "position": "Human Resources Specialist",
+  "status": "declined"
+}
+
+### Get Single Job
+@jobId=658562c223522c012a2c0964
+GET /api/v1/jobs/{{jobId}} HTTP/1.1
+Host: {{baseUrl}}
+Authorization: Bearer {{bearerToken}}
+
+### Update Single Job
+PATCH /api/v1/jobs/{{jobId}} HTTP/1.1
+Host: {{baseUrl}}
+Content-Type: application/json
+Authorization: Bearer {{bearerToken}}
+
+{
+  "company": "Skyline Dynamics",
+  "position": "Product Manager",
+  "status": "interview"
+}
+
+### Delete Single Job
+DELETE /api/v1/jobs/{{jobId}} HTTP/1.1
+Host: {{baseUrl}}
+Authorization: Bearer {{bearerToken}}
