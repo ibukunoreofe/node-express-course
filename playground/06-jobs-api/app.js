@@ -47,21 +47,51 @@ app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 // routes
 app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/jobs', authenticateUser, jobsRouter);
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
 const port = process.env.PORT || 5000;
 
-const start = async () => {
-  try {
-    await connectDB(process.env.MONGO_URI);
-    app.listen(port, () =>
-      console.log(`Server is listening on port ${port}...`)
-    );
-  } catch (error) {
-    console.log(error);
-  }
-};
+// const start = async () => {
+//   try {
+//     await connectDB(process.env.MONGO_URI);
+//     app.listen(port, () =>
+//       console.log(`Server is listening on port ${port}...`)
+//     );
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 
-start();
+// start();
+
+// process.on('uncaughtException', (err) => {
+//     console.error('There was an uncaught error:', err);
+//     // Perform cleanup or gracefully shutdown your application
+//     // It's important to exit the process after handling the exception
+//     process.exit(1); // Exit with a failure code
+// });
+
+const connectToDbAsync = async ()=> await connectDB(process.env.MONGO_URI);
+
+const isInLambda = !!process.env.LAMBDA_TASK_ROOT;
+if (!isInLambda){
+    const start = async () => {
+      try {
+        await connectToDbAsync();
+        app.listen(port, () =>
+          console.log(`Server is listening on port ${port}...`)
+        );
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    start();
+}
+
+module.exports = {app, connectToDbAsync};

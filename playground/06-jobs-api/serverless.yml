@@ -1,0 +1,41 @@
+org: mariahrose
+app: aws-node-project2
+service: aws-node-project2
+frameworkVersion: '3'
+useDotenv: true
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  stage: dev
+  region: eu-west-3
+  memorySize: 256
+  timeout: 10
+
+functions:
+  app:
+    handler: serverless.handler
+    events:
+      - http:
+          path: "/"
+          method: any
+          cors: true
+      - http:
+          path: "/{proxy+}"
+          method: any
+          cors: true
+    environment:
+      JWT_SECRET: ${env:JWT_SECRET}
+      JWT_LIFETIME: ${env:JWT_LIFETIME}
+      PORT: ${env:PORT}
+      MONGO_URI: ${env:MONGO_URI}
+
+plugins:
+  - serverless-offline
+  - serverless-dotenv-plugin
+
+custom:
+  serverless-offline:
+    host: 0.0.0.0
+
+

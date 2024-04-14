@@ -23,3 +23,7 @@ Swagger UI
       required: true
       description: the job id
 ```
+
+"dev": "nodemon --inspect-brk app.js",
+"dev": "nodemon --inspect app.js",
+

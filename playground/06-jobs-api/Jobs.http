@@ -11,7 +11,7 @@ Content-Type: application/json
 }
 
 ### Login
-POST /api/v1/auth/login HTTP/1.1
+POST /{{basePath}}/api/v1/auth/login HTTP/1.1
 Host: {{baseUrl}}
 Content-Type: application/json
 Authorization: Bearer {{bearerToken}}
@@ -20,6 +20,14 @@ Authorization: Bearer {{bearerToken}}
   "email": "random1@mailinator.com",
   "password": "password"
 }
+
+### HOME PAGE
+### HTTP has issues with path usage
+GET /{{basePath}} HTTP/1.1
+Host: {{baseUrl}}
+User-Agent: PostmanRuntime/7.36.0
+Accept: */*
+Cache-Control: no-cache
 
 ### Jobs
 GET /api/v1/jobs HTTP/1.1

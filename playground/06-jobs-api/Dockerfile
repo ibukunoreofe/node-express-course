@@ -9,6 +9,9 @@ RUN apt-get update \
 RUN apt-get install -y \
     iproute2 iputils-ping
 
+# Other Tools
+RUN apt-get install -y \
+    lsof htop \
 
 WORKDIR /usr/src/app
 
